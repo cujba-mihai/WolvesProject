@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import CardView from '../cardView/CardView';
 import ImagePopup from '../imagePopup/imagePopup';
 
+import useDelayUnmount from '../../utils/useDelayUnmount';
+
 import MenuIcon from '../../static/menu-icon.svg';
 import './styles/card.scss';
 
@@ -10,6 +12,8 @@ const Card = ({ images }) => {
   const [bigImg, smallImg] = images;
   const [openView, setOpenView] = useState(false);
   const [showImgPopup, setShowImgPopup] = useState(false);
+
+  const delayUnmount = useDelayUnmount(openView, 650);
 
   const handleImagePopup = () => {
     setShowImgPopup(!showImgPopup);
@@ -56,12 +60,13 @@ const Card = ({ images }) => {
         </div>
       </article>
 
-      {openView ? (
+      {delayUnmount ? (
         <CardView
           src={bigImg}
           title="Wolf"
           handleClick={handleDescriptionModal}
           setOpenView={setOpenView}
+          openView={delayUnmount}
         />
       ) : null}
 

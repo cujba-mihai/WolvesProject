@@ -2,7 +2,11 @@
 
 
 .cardView {
+
+ 
+
   &__portal {
+
     position: absolute;
     left: 0%;
     z-index: 10;
@@ -13,8 +17,17 @@
     background: #202c37;
 
     color: white;
+    &_isClosed{
+      @include animation('slide-down .7s ease-in-out 1');
+    }
+  
+    &_isOpen{
+      @include animation('slide-up .7s ease-in-out 1');
+ 
+      
+    }
 
-    @include animation('down-to-up .7s ease-in-out 1');
+  
   }
 
   &__container {
@@ -24,6 +37,8 @@
     padding: 5%;
 
     position: relative;
+
+
   }
 
   &__back-btn {

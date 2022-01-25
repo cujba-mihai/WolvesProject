@@ -1,13 +1,21 @@
 import Portal from '../../utils/CreatePortal.jsx';
+
 import './styles/cardView.scss';
 
-const CardView = ({ src, title, handleClick, setOpenView }) => {
+const CardView = ({ src, title, handleClick, openView }) => {
   const positionY = window.scrollY + 47;
 
   const handleBack = () => handleClick();
 
   return (
-    <Portal className="cardView__portal" style={{ top: `${positionY}px` }}>
+    <Portal
+      className={
+        openView
+          ? 'cardView__portal cardView__portal_isOpen'
+          : 'cardView__portal cardView__portal_isClosed'
+      }
+      style={{ top: `${positionY}px` }}
+    >
       <div className="cardView__container">
         <button className="cardView__back-btn" onClick={handleBack}>
           <span className="cardView__back-text">← back</span>

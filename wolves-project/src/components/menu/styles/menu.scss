@@ -7,7 +7,13 @@
   right: 0%;
 
   
-  @include animation('right-to-left .7s ease-in-out 1');
+  &_isOpening {
+    @include animation('right-to-left .7s ease-in-out 1');
+  }
+
+  &_isClosing {
+    @include animation('left-to-right .7s ease-in-out 1');
+  }
 
   &__wrapper {
     max-width: 100%;

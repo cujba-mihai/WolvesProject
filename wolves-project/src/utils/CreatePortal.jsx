@@ -12,7 +12,8 @@ const Portal = ({
   });
 
   useEffect(() => {
-    container.classList.add(className);
+    className.split(' ').forEach((e) => container.classList.add(e));
+
     document.body.appendChild(container);
     container.style.top = style.top;
     document.body.style.overflow = 'hidden';
