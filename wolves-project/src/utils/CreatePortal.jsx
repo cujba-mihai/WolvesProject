@@ -15,9 +15,11 @@ const Portal = ({
     container.classList.add(className);
     document.body.appendChild(container);
     container.style.top = style.top;
+    document.body.style.overflow = 'hidden';
 
     return () => {
       container.remove();
+      document.body.style.overflow = 'unset';
     };
   }, [className, container, style]);
 
