@@ -90,6 +90,11 @@
     letter-spacing: 0.05em;
     font-weight: 700;
     line-height: 1.2;
+
+    display: inline-block;
+    max-width: 27ch;
+    overflow: hidden;
+    max-height: 7.4rem;
   }
 
   &__footer {
