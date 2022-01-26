@@ -1,16 +1,16 @@
 import './styles/cardSkeleton.scss';
 
-const CardSkeleton = () => {
+const Skeleton = () => {
   return (
     <article className="card-skeleton">
       <div className="card-skeleton__container">
         <div className="card-skeleton__image-wrapper">
-          <div className="card-skeleton__background-image"></div>
+          <i className="card-skeleton__background-image"></i>
         </div>
 
         <div className="card-skeleton__tags">
-          <span className="card-skeleton__tags card-skeleton__tags_isPrimary"></span>
-          <span className="card-skeleton__tags card-skeleton__tags_isSecondary"></span>
+          <i className="card-skeleton__tags card-skeleton__tags_isPrimary"></i>
+          <i className="card-skeleton__tags card-skeleton__tags_isSecondary"></i>
         </div>
 
         <div className="card-skeleton__description">
@@ -35,6 +35,10 @@ const CardSkeleton = () => {
       </div>
     </article>
   );
+};
+
+const CardSkeleton = ({ renderSelf }) => {
+  return <>{renderSelf ? <Skeleton /> : null}</>;
 };
 
 export default CardSkeleton;

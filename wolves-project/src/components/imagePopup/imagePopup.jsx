@@ -2,6 +2,7 @@ import Portal from '../../utils/CreatePortal';
 import './styles/imagePopup.scss';
 const ImagePopup = ({ 0: imagesrc, handleImagePopup }) => {
   const positionY = window.scrollY + 47;
+
   return (
     <Portal className="image-popup__portal" style={{ top: `${positionY}px` }}>
       <div className="image-popup__bg">

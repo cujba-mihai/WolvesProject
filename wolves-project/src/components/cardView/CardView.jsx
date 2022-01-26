@@ -1,4 +1,4 @@
-import Portal from '../../utils/CreatePortal.jsx';
+// import Portal from '../../utils/CreatePortal.jsx';
 
 import './styles/cardView.scss';
 
@@ -8,7 +8,7 @@ const CardView = ({ src, title, handleClick, openView }) => {
   const handleBack = () => handleClick();
 
   return (
-    <Portal
+    <div
       className={
         openView
           ? 'cardView__portal cardView__portal_isOpen'
@@ -59,7 +59,7 @@ const CardView = ({ src, title, handleClick, openView }) => {
           </div>
         </article>
       </div>
-    </Portal>
+    </div>
   );
 };
 

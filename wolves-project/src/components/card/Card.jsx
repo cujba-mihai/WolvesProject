@@ -1,17 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-import CardView from '../cardView/CardView';
+// Components import - Card styles
+import CardTemplate from './partials/CardTemplate';
+import CardSkeleton from '../cardSkeletons/CardSkeleton';
+
+// Components import - Card functionalities
 import ImagePopup from '../imagePopup/imagePopup';
+import CardView from '../cardView/CardView';
 
+// Container components
 import useDelayUnmount from '../../utils/useDelayUnmount';
 
-import MenuIcon from '../../static/menu-icon.svg';
+// Styles
 import './styles/card.scss';
 
 const Card = ({ images }) => {
   const [bigImg, smallImg] = images;
   const [openView, setOpenView] = useState(false);
   const [showImgPopup, setShowImgPopup] = useState(false);
+
+  const [showCardSkeletons, setShowCardSkeletons] = useState(true);
+  const toggleCardSkeletons = () => setShowCardSkeletons(!showCardSkeletons);
 
   const delayUnmount = useDelayUnmount(openView, 650);
 
@@ -22,43 +31,18 @@ const Card = ({ images }) => {
   const handleDescriptionModal = () => {
     setOpenView(!openView);
   };
-
-  useEffect(() => {}, []);
-
+  console.log('SMALL IMAGE: ', smallImg);
   return (
     <>
-      <article className="card">
-        <div className="card__container">
-          <div className="card__image-wrapper" onClick={handleImagePopup}>
-            <div
-              className="card__background-image"
-              style={{
-                backgroundImage: `url(${smallImg})`,
-                backgroundClip: 'content-box',
-              }}
-            ></div>
-          </div>
+      <CardSkeleton renderSelf={showCardSkeletons} />
 
-          <div className="card__tags">
-            <span className="card__tags card__tags_isPrimary">ANIMALS</span>
-            <span className="card__tags card__tags_isSecondary">
-              WILDLIFE WATCH
-            </span>
-          </div>
-          <div onClick={handleDescriptionModal}>
-            <div className="card__description">
-              <span className="card__description-text">
-                Siberian tigers are being hunted at night for their body parts
-              </span>
-            </div>
-
-            <div className="card__footer">
-              <img src={MenuIcon} alt="menu-icon" className="card__menu-icon" />
-              <span className="card__menu-text">VIEW</span>
-            </div>
-          </div>
-        </div>
-      </article>
+      <CardTemplate
+        handleImagePopup={handleImagePopup}
+        handleDescriptionModal={handleDescriptionModal}
+        smallImg={smallImg}
+        toggleCardSkeletons={toggleCardSkeletons}
+        renderSelf={!showCardSkeletons}
+      />
 
       {delayUnmount ? (
         <CardView
@@ -66,7 +50,7 @@ const Card = ({ images }) => {
           title="Wolf"
           handleClick={handleDescriptionModal}
           setOpenView={setOpenView}
-          openView={delayUnmount}
+          openView={openView}
         />
       ) : null}
 

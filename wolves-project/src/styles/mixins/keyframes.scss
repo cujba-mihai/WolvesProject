@@ -30,7 +30,8 @@
 }
 
 @include keyframes(slide-down) {
-  100% {   bottom: 100%;}
+  0% {   transform: translateY(0%);}
+  100% {   transform: translateY(100%);}
 }
 
 @include keyframes(right-to-left) {
@@ -41,4 +42,8 @@
 @include keyframes(left-to-right) {
   0% {transform: translateX(0%);}
   100% {transform: translateX(100%);}
+}
+
+@include keyframes(shimmer) {
+  100% { transform: translateX(100%); }
 }

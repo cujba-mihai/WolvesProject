@@ -15,14 +15,14 @@ const NavList = () => {
   };
 
   return (
-    <>
-      <ul className="navigation__list-container">
-        <li className="navigation__menu" onClick={handleToggleClicked}>
-          <span className="navigation__text">Menu</span>
-        </li>
-      </ul>
-      {shouldRenderChild ? <Menu showMenu={showMenu} /> : null}
-    </>
+    <ul className="navigation__list-container">
+      <li className="navigation__menu" onClick={handleToggleClicked}>
+        <span className="navigation__text">Menu</span>
+      </li>
+      <section>
+        {shouldRenderChild ? <Menu showMenu={showMenu} /> : null}
+      </section>
+    </ul>
   );
 };
 
