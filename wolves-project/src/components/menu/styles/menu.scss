@@ -1,4 +1,5 @@
 @import "../../../styles/mixins/keyframes.scss";
+@import "../../../styles/utils/responsive.scss";
 
 .menu {
 
@@ -25,6 +26,26 @@
     background-color: orange;
 
     padding: 5.5rem;
+
+    @include media(">medium-desktop", "<=desktop") {
+      width: 40vw;;
+    }
+
+    @include media(">tablet", "<=medium-desktop") {
+      width: 55vw;;
+    }
+
+    @include media(">small-tablet", "<=tablet") {
+      width: 60vw;
+    }
+
+    @include media(">=small-phone", "<=small-tablet") {
+      width: 100vw;
+    }
+
+    @include media("<=small-phone") {
+      width: 100vw;
+    }
   }
 
   &__list {
@@ -62,6 +83,10 @@
     width: 100%;
     text-align: left;
     cursor: pointer;
+
+    @include media("<=xs-phone") {
+     font-size: 3.1rem;
+    }
   }
 
   &__category-text {

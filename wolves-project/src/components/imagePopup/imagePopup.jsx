@@ -1,8 +1,26 @@
+import { useEffect, useState } from 'react';
+import updateWindowDimensions from '../../utils/calculateWinResize';
 import Portal from '../../utils/CreatePortal';
 import './styles/imagePopup.scss';
 const ImagePopup = ({ 0: imagesrc, handleImagePopup }) => {
-  const positionY = window.scrollY + 47;
+  const [windowWidth, setWindowWidth] = useState(0);
+  const [pxSize, setPxSize] = useState(0.625);
 
+  const positionY = window.scrollY + 75 * pxSize;
+  useEffect(() => {
+    // Disable scroll
+    document.body.style.overflow = 'hidden';
+
+    // Set responsive pos. absolute
+    setWindowWidth(updateWindowDimensions().width);
+    setPxSize(updateWindowDimensions().remSize);
+    window.addEventListener('resize', updateWindowDimensions);
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('resize', updateWindowDimensions);
+    };
+  }, [windowWidth]);
   return (
     <Portal className="image-popup__portal" style={{ top: `${positionY}px` }}>
       <div className="image-popup__bg">

@@ -1,12 +1,22 @@
+@import "../utils/responsive.scss";
+
 *,
 *:after,
 *:before {
-  box-sizing: border-box;
+  box-sizing: border-box; 
 }
 
 html {
   font-size: 62.5%;
   text-rendering: geometricPrecision;
+
+  @include media(">phone", "<tablet") {
+    font-size: 56.25%;  // 1rem = 9px
+  }
+ 
+  @include media("<=phone"  ) {
+    font-size: 50%;  // 1rem = 8px
+  }
 }
 
 body {

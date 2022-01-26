@@ -1,3 +1,5 @@
+@import "../../../styles/utils/responsive.scss";
+
 .hero {
 
   &__container {
@@ -71,6 +73,30 @@
     background: black;
     place-items: center;
 
-    color: white
+    color: white;
+
+    @include media(">xl-desktop", "<=desktop") {
+      grid-template-columns:  repeat(5, 1fr);
+    }
+
+    @include media(">medium-desktop", "<=xl-desktop") {
+      grid-template-columns:  repeat(4, 1fr);
+    }
+
+    @include media(">tablet", "<=medium-desktop") {
+      grid-template-columns:  repeat(3, 1fr);
+    }
+
+    @include media(">small-tablet", "<=tablet") {
+      grid-template-columns:  repeat(3, 1fr);
+    }
+
+    @include media(">=small-phone", "<=small-tablet") {
+      grid-template-columns:  repeat(2, 1fr);
+    }
+
+    @include media("<=small-phone") {
+      grid-template-columns:  1fr;
+    }
   }
 }

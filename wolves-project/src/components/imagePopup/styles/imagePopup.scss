@@ -1,3 +1,5 @@
+@import "../../../styles/utils/responsive";
+
 .image-popup {
 
   &__portal {
@@ -7,7 +9,7 @@
     bottom: 0;
     right: 0;
 
-    z-index: 10;
+    z-index: 1;
 
 
 
@@ -37,12 +39,22 @@
    place-items: center;
 
    background-color: black;
+
+   @include media('<=s-desktop') {
+     width: 100vw;
+     max-width: 100%;
+   }
+   @include media('<=phone') {
+   display: grid;
+   
+  }
+
   }
 
   &__close {
     position: absolute;
-    top: 0%;
-    right: 0%;
+    top: 2%;
+    left: 4%;
 
     cursor: pointer;
   }
@@ -55,5 +67,12 @@
   &__img {
     max-height: 100vh;
     max-width: 100%;
+
+    @include media('<=phone') {
+      position: absolute;
+      top: 10%;
+
+      place-self: center;
+    }
   }
 }

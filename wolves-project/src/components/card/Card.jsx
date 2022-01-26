@@ -31,7 +31,7 @@ const Card = ({ images }) => {
   const handleDescriptionModal = () => {
     setOpenView(!openView);
   };
-  console.log('SMALL IMAGE: ', smallImg);
+
   return (
     <>
       <CardSkeleton renderSelf={showCardSkeletons} />

@@ -1,11 +1,28 @@
-// import Portal from '../../utils/CreatePortal.jsx';
+import updateWindowDimensions from '../../utils/calculateWinResize';
 
+import { useEffect, useState } from 'react';
 import './styles/cardView.scss';
 
 const CardView = ({ src, title, handleClick, openView }) => {
-  const positionY = window.scrollY + 47;
+  const [windowWidth, setWindowWidth] = useState(0);
+  const [pxSize, setPxSize] = useState(0.625);
 
   const handleBack = () => handleClick();
+  const positionY = window.scrollY + 75 * pxSize;
+  useEffect(() => {
+    // Disable scroll
+    document.body.style.overflow = 'hidden';
+
+    // Set responsive pos. absolute
+    setWindowWidth(updateWindowDimensions().width);
+    setPxSize(updateWindowDimensions().remSize);
+    window.addEventListener('resize', updateWindowDimensions);
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('resize', updateWindowDimensions);
+    };
+  }, [windowWidth]);
 
   return (
     <div
@@ -14,7 +31,7 @@ const CardView = ({ src, title, handleClick, openView }) => {
           ? 'cardView__portal cardView__portal_isOpen'
           : 'cardView__portal cardView__portal_isClosed'
       }
-      style={{ top: `${positionY}px` }}
+      style={{ top: `calc(${positionY}px)` }}
     >
       <div className="cardView__container">
         <button className="cardView__back-btn" onClick={handleBack}>
