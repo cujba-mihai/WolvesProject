@@ -1,7 +1,6 @@
 //Component imports
 import withFetch from '../container/withFetch';
 import Card from '../card/Card';
-// import CardSkeleton from '../cardSkeletons/CardSkeleton';
 
 //Styles import
 import './styles/hero.scss';
@@ -9,7 +8,6 @@ import './styles/hero.scss';
 const WrappedComponent = (props) => {
   const {
     data: { wolves },
-    // isLoading,
     isError,
   } = props;
 
